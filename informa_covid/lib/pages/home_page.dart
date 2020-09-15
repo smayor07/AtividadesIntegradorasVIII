@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/pages/escolha_sexo_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +16,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EscolhaSexoPage()),
+          );
+        },
+        child: Icon(Icons.arrow_right),
       ),
     );
   }
