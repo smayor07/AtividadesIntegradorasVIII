@@ -15,9 +15,16 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [],
+        children: [
+          RoundButton(
+            caminhoImg: "assets/fem.png",
+          ),
+          RoundButton(
+            caminhoImg: "assets/masc.png",
+          ),
+        ],
       ),
     );
   }

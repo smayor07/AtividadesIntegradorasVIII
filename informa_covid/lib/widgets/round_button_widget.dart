@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {
+  final String caminhoImg;
+  final Function onTap;
+
+  const RoundButton({
+    Key key,
+    this.caminhoImg = "assets/fem.png",
+    this.onTap,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 180.0,
-      width: 180.0,
-      decoration: BoxDecoration(
-        color: Color(0xFFD6EDE7),
+    return ClipOval(
+        child: Material(
+      color: Colors.white, // button color
+      child: InkWell(
+        splashColor: Color(0xFF86CFC4), // inkwell color
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Container(
+            decoration: BoxDecoration(border: Border.all()),
+            width: 130,
+            height: 130,
+            child: Image.asset(caminhoImg),
+          ),
+        ),
+        onTap: () {},
       ),
-    );
+    ));
   }
 }
