@@ -20,13 +20,12 @@ class RoundButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Container(
-            decoration: BoxDecoration(border: Border.all()),
             width: 130,
             height: 130,
             child: Image.asset(caminhoImg),
           ),
         ),
-        onTap: () {},
+        onTap: onTap,
       ),
     ));
   }

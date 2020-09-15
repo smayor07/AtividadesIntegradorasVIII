@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/round_button_widget.dart';
 
 class EscolhaSexoPage extends StatefulWidget {
@@ -15,15 +16,31 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          RoundButton(
-            caminhoImg: "assets/fem.png",
+          Expanded(
+            child: SingleChildScrollView(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 50.0),
+                RoundButton(
+                  caminhoImg: "assets/fem.png",
+                  onTap: () {
+                    print("Feminino");
+                  },
+                ),
+                SizedBox(height: 50.0),
+                RoundButton(
+                  caminhoImg: "assets/masc.png",
+                  onTap: () {
+                    print("Masculino");
+                  },
+                ),
+              ],
+            )),
           ),
-          RoundButton(
-            caminhoImg: "assets/masc.png",
-          ),
+          Rodape()
         ],
       ),
     );
