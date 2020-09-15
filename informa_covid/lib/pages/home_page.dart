@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/pages/escolha_sexo_page.dart';
+import 'package:informa_covid/pages/diagnosticado_covid_page.dart';
+//import 'package:informa_covid/pages/escolha_sexo_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EscolhaSexoPage()),
+            MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage()),
           );
         },
         child: Icon(Icons.arrow_right),
