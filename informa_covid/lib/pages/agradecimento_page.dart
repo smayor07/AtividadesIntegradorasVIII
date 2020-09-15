@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/widgets/rodape_widget.dart';
 
 class AgradecimentoPage extends StatelessWidget {
   @override
@@ -45,16 +46,7 @@ class AgradecimentoPage extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: 72,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-                color: Color(0xFF7dcadb),
-                image: DecorationImage(
-                  image: AssetImage('assets/white-logo-unifenas.png'),
-                  fit: BoxFit.contain,
-                )),
-          )
+          Rodape()
         ],
       ),
     );
