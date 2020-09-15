@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/widgets/round_button_widget.dart';
 
 class EscolhaSexoPage extends StatefulWidget {
   @override
@@ -14,6 +15,8 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [],
       ),
     );
