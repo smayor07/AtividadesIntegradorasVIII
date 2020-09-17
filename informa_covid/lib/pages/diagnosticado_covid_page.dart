@@ -11,32 +11,14 @@ class _DiagnosticadoCovidPage extends State<DiagnosticadoCovidPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informa Covid Tela diag"),
+        title: Text('Informa Covid'),
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 25,
+      body: Center(
+          //child: NoYes(
+          //caminhoImg: "assets/saude.png",
           ),
-          Center(
-            child: Container(
-              width: 240,
-              height: 150,
-              color: Colors.transparent,
-              child: Text(
-                'Você já foi '
-                'diagnosticado com '
-                'covid-19? ',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 32,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      //),
     );
   }
 }
