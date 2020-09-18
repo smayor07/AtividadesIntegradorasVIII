@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:informa_covid/widgets/NoYes_widget.dart';
 
 class DiagnosticadoCovidPage extends StatefulWidget {
   @override
@@ -11,14 +12,14 @@ class _DiagnosticadoCovidPage extends State<DiagnosticadoCovidPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Informa Covid'),
+        title: Text('Informa Covid diag'),
         centerTitle: true,
       ),
       body: Center(
-          //child: NoYes(
-          //caminhoImg: "assets/saude.png",
-          ),
-      //),
+        child: NoYes(
+          caminhoImg: "assets/saude.png",
+        ),
+      ),
     );
   }
 }
