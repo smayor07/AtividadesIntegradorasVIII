@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/pages/agradecimento_page.dart';
 import 'package:informa_covid/pages/escolha_sexo_page.dart';
-<<<<<<< HEAD
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
-=======
-import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
-import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
->>>>>>> master
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,7 +21,6 @@ class _HomePageState extends State<HomePage> {
         title: Text("Bem Vindo ao"),
         centerTitle: true,
       ),
-<<<<<<< HEAD
       body: Padding(
         padding: const EdgeInsets.all(40.0),
         child: Center(
@@ -74,19 +68,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-=======
-      body: Column(
-        children: [],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
-          );
-        },
-        child: Icon(Icons.arrow_right),
->>>>>>> master
       ),
     );
   }
