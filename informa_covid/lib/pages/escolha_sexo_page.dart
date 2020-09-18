@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/round_button_widget.dart';
+import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class EscolhaSexoPage extends StatefulWidget {
   @override
@@ -12,25 +15,27 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informa Covid"),
+        title: LogoCovid(),
         centerTitle: true,
       ),
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-                child: Column(
+              child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 50.0),
+                Titulo(
+                  label: "Informe se sexo",
+                ),
                 RoundButton(
                   caminhoImg: "assets/fem.png",
                   onTap: () {
                     print("Feminino");
                   },
                 ),
-                SizedBox(height: 50.0),
                 RoundButton(
                   caminhoImg: "assets/masc.png",
                   onTap: () {
@@ -38,8 +43,8 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                   },
                 ),
               ],
-            )),
-          ),
+            ),
+          )),
           Rodape()
         ],
       ),
