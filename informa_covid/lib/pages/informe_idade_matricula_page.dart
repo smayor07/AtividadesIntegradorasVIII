@@ -7,7 +7,7 @@ class InformeIdadeMatricula extends StatefulWidget {
 
 var _informeIdadeController = TextEditingController();
 var _informeMatriculaController = TextEditingController();
-DateTime _dateTime;
+int idade;
 
 class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
   @override
@@ -39,29 +39,54 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Informe sua idade:',
+                    'Idade:${idade} anos',
                     style: TextStyle(
-                      fontSize: 20
+                      fontSize: 25
                     ),
                   ),
                   ButtonTheme(
                     minWidth: 25.0,
                     height: 40.0,
-                    buttonColor: Color(0xFF005500),
+                    buttonColor: Colors.grey,
                     child: RaisedButton(
                       child: Icon(
                         Icons.date_range,
                         color: Colors.white,
                       ),
-                      onPressed: null
+                      onPressed: () {
+                        calculaIdade(context);
+                      }
                     ),
                   )
                 ],
-              )
+              ),
             ),
           )
         ],
       ),
     );
+  }
+
+  Future<Null> calculaIdade(BuildContext context) async {
+    showDatePicker(
+      context: context, 
+      initialDate: DateTime.now(), 
+      firstDate: DateTime(2001), 
+      lastDate: DateTime(2222)
+    ).then((date) {
+      setState(() {
+        DateTime nascimento = date;
+        DateTime dataAtual = DateTime.now();
+        int days = dataAtual.difference(nascimento).inDays;
+        int aux;
+        for (var i = 0; i < days; i++) {
+          if (aux == 365) {
+            aux = 0;
+            idade++;
+          }
+          aux++;
+        }
+      });
+    });
   }
 }

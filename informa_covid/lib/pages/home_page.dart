@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
+            MaterialPageRoute(builder: (context) => InformeIdadeMatricula()),
           );
         },
         child: Icon(Icons.arrow_right),
