@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/pages/agradecimento_page.dart';
-import 'package:informa_covid/pages/escolha_sexo_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:informa_covid/pages/vinculoUniversitario_page.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
@@ -61,7 +60,8 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EscolhaSexoPage()),
+                    MaterialPageRoute(
+                        builder: (context) => VinculoUniversitarioPage()),
                   );
                 },
               )

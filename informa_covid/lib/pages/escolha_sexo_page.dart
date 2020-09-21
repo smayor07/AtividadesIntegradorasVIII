@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/round_button_widget.dart';
@@ -34,6 +34,10 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                   caminhoImg: "assets/fem.png",
                   onTap: () {
                     print("Feminino");
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
+                  );
                   },
                 ),
                 RoundButton(
