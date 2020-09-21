@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
-class PossuiComorbidadePage extends StatefulWidget {
+class UtilizaMascaraPage extends StatefulWidget {
   @override
-  _PossuiComorbidadePageState createState() => _PossuiComorbidadePageState();
+  _UtilizaMascaraPageState createState() => _UtilizaMascaraPageState();
 }
 
-class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
+class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,17 +27,11 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Titulo(
-                  label: "Você possui alguma comorbidade?",
+                  label: "Você utiliza máscara no seu dia a dia?",
                 ),
                 NoYes(
-                  caminhoImg: "assets/saude.png",
-                  onTapYes: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UtilizaMascaraPage()),
-                    );
-                  },
+                  caminhoImg: "assets/tchau.png",
+                  onTapYes: () {},
                   onTapNo: () {},
                 ),
               ],
