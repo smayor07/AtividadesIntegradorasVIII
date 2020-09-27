@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/pages/contatoCovid_page.dart';
-import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
@@ -40,7 +39,9 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
                           builder: (context) => ContatoCovidPage()),
                     );
                   },
-                  onTapNo: () {},
+                  onTapNo: () {
+                    alertdialogDiagnostico(context);
+                  },
                 ),
               ],
             ),
@@ -48,6 +49,36 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
           Rodape()
         ],
       ),
+    );
+  }
+
+  alertdialogDiagnostico(BuildContext context) {
+    Widget okButton = FlatButton(
+      child: Text("Entendido"),
+      color: Colors.green,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ContatoCovidPage()),
+        );
+      },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text(
+          "É sempre importante seguir as recomendações dos profissionais da saúde e respeitar a quarentena!"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
     );
   }
 }
