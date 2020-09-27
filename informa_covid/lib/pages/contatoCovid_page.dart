@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/pages/utilizaMascara_page.dart';
+import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/pages/vinculoUniversitario_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
@@ -41,7 +41,9 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
                           builder: (context) => VinculoUniversitarioPage()),
                     );
                   },
-                  onTapNo: () {},
+                  onTapNo: () {
+                    alertdialogDiagnostico(context);
+                  },
                 ),
               ],
             ),
@@ -49,6 +51,36 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
           Rodape()
         ],
       ),
+    );
+  }
+
+  alertdialogDiagnostico(BuildContext context) {
+    Widget okButton = FlatButton(
+      child: Text("Entendido"),
+      color: Colors.green,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
+        );
+      },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text(
+          "Para sua segurança e a de todos, entre em contato com profissionais de saúde e siga as orientações!"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
     );
   }
 }
