@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/pages/diagnosticadoCovid_page.dart';
-import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
-import 'package:informa_covid/pages/splash_screen.dart';
+import 'package:informa_covid/pages/contatoCovid_page.dart';
+import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
-class UtilizaMascaraPage extends StatefulWidget {
+class DiagnosticadoCovidPage extends StatefulWidget {
   @override
-  _UtilizaMascaraPageState createState() => _UtilizaMascaraPageState();
+  _DiagnosticadoCovidPageState createState() => _DiagnosticadoCovidPageState();
 }
 
-class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
+class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +29,15 @@ class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Titulo(
-                  label: "Você utiliza máscara no seu dia a dia?",
+                  label: "Você já foi diagnosticado com Covid-19?",
                 ),
                 NoYes(
-                  caminhoImg: "assets/tchau.png",
+                  caminhoImg: "assets/tosse.png",
                   onTapYes: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DiagnosticadoCovidPage()),
+                          builder: (context) => ContatoCovidPage()),
                     );
                   },
                   onTapNo: () {},
