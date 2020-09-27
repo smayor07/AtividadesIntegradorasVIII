@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
@@ -36,7 +37,7 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                     print("Feminino");
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula()),
                   );
                   },
                 ),
