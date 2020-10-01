@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/main.dart';
 import 'package:informa_covid/pages/contatoCovid_page.dart';
+import 'package:informa_covid/pages/lista_perguntas_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
@@ -35,8 +37,7 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
                   onTapYes: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => ContatoCovidPage()),
+                      MaterialPageRoute(builder: (context) => ListaPerguntas()),
                     );
                   },
                   onTapNo: () {
@@ -55,7 +56,7 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
   alertdialogDiagnostico(BuildContext context) {
     Widget okButton = FlatButton(
       child: Text("Entendido"),
-      color: Colors.green,
+      color: Colors.white,
       onPressed: () {
         Navigator.push(
           context,
