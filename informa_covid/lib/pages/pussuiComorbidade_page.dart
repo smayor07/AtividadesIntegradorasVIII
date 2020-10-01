@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/pages/agradecimento_page.dart';
 import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
+import 'package:informa_covid/widgets/dialog_writer_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
@@ -33,13 +35,15 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
                 NoYes(
                   caminhoImg: "assets/saude.png",
                   onTapYes: () {
+                    _comorbidade();
+                  },
+                  onTapNo: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UtilizaMascaraPage()),
+                          builder: (context) => AgradecimentoPage()),
                     );
                   },
-                  onTapNo: () {},
                 ),
               ],
             ),
@@ -47,6 +51,46 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
           Rodape()
         ],
       ),
+    );
+  }
+
+  void _comorbidade() {
+    DialogWriterWidget dialogDoenca = DialogWriterWidget();
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Informe sua doença:',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black
+            ),
+          ),
+          content: dialogDoenca,
+          actions: [
+            FlatButton(
+              onPressed: (){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => AgradecimentoPage())
+                );
+              }, 
+              child: Text('OK')
+            ),
+            FlatButton(
+              onPressed: (){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage())
+                );
+              }, 
+              child: Text('Cancelar')
+            )
+          ],
+        );
+      }
     );
   }
 }

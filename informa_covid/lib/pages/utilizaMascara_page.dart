@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/pages/diagnosticadoCovid_page.dart';
 import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/dialog_mascara_widget.dart';
@@ -71,7 +72,7 @@ class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
               onPressed: (){
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => InformeIdadeMatricula())
+                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage())
                 );
               }, 
               child: Text('Continuar')
@@ -102,7 +103,7 @@ class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
               onPressed: (){
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => InformeIdadeMatricula())
+                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage())
                 );
               }, 
               child: Text('Entendido?')
