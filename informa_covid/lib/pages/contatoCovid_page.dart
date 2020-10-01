@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/pages/lista_perguntas_page.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
-import 'package:informa_covid/pages/vinculoUniversitario_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
+import 'package:informa_covid/widgets/dialog_mascara_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
@@ -12,6 +13,7 @@ class ContatoCovidPage extends StatefulWidget {
 }
 
 class _ContatoCovidPageState extends State<ContatoCovidPage> {
+  String naoContato = "Para sua segurança e a de todos, entre em contato com profissionais de saúde e siga as orientações!";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +40,11 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => VinculoUniversitarioPage()),
+                          builder: (context) => ListaPerguntas()),
                     );
                   },
                   onTapNo: () {
-                    alertdialogDiagnostico(context);
+                    _naoContatoCovid(naoContato);
                   },
                 ),
               ],
@@ -54,33 +56,64 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
     );
   }
 
-  alertdialogDiagnostico(BuildContext context) {
-    Widget okButton = FlatButton(
-      child: Text("Entendido"),
-      color: Colors.green,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
-        );
-      },
-    );
-
-    // configura o  AlertDialog
-    AlertDialog alerta = AlertDialog(
-      title: Text(
-          "Para sua segurança e a de todos, entre em contato com profissionais de saúde e siga as orientações!"),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // exibe o dialog
+  void _naoContatoCovid(String msg) {
+    AlertDialogUsaMascara dialogDiagCovid = AlertDialogUsaMascara(mensagem: msg);
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return alerta;
-      },
+        return AlertDialog(
+          title: Text(
+            'ATENÇÃO!',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black
+            ),
+          ),
+          content: dialogDiagCovid,
+          actions: [
+            FlatButton(
+              onPressed: (){
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage())
+                );
+              }, 
+              child: Text('Entendido?')
+            )
+          ],
+        );
+      }
     );
   }
+
+  // alertdialogDiagnostico(BuildContext context) {
+  //   Widget okButton = FlatButton(
+  //     child: Text("Entendido"),
+  //     color: Colors.green,
+  //     onPressed: () {
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => PossuiComorbidadePage()),
+  //       );
+  //     },
+  //   );
+
+  //   // configura o  AlertDialog
+  //   AlertDialog alerta = AlertDialog(
+  //     title: Text(
+  //         "Para sua segurança e a de todos, entre em contato com profissionais de saúde e siga as orientações!"),
+  //     actions: [
+  //       okButton,
+  //     ],
+  //   );
+
+  //   // exibe o dialog
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alerta;
+  //     },
+  //   );
+  // }
 }
