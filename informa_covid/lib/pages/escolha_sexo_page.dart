@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
@@ -34,17 +35,23 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                 RoundButton(
                   caminhoImg: "assets/fem.png",
                   onTap: () {
+                    Aluno aluno = new Aluno("Feminino");
                     print("Feminino");
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula()),
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(aluno:aluno)),
                   );
                   },
                 ),
                 RoundButton(
                   caminhoImg: "assets/masc.png",
                   onTap: () {
+                    Aluno aluno = new Aluno("Masculino");
                     print("Masculino");
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(aluno:aluno)),
+                  );
                   },
                 ),
               ],

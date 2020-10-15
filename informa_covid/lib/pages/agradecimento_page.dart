@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
+import 'package:informa_covid/repository/dataaluno.dart';
+import 'package:informa_covid/widgets/NoYes_widget.dart';
+import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 
 class AgradecimentoPage extends StatelessWidget {
+  
+  AgradecimentoPage({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
+  AlunoRepository alunoRepository = new AlunoRepository();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +46,26 @@ class AgradecimentoPage extends StatelessWidget {
             height: 40,
           ),
           Center(
-            child: Container(
-              width: 260,
-              height: 270,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/tchau.png'),
-                  fit: BoxFit.cover,
+            child: Row(
+              children: [
+                Container(
+                  width: 260,
+                  height: 270,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/tchau.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
-            ),
+                CustonButton(
+                  label: "Finalizar",
+                  onTap: (){
+                    alunoRepository.addAluno(this.aluno);
+                  },
+                )
+              ],
+            )
           ),
           Rodape()
         ],

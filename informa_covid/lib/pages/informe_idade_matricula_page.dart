@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 
 class InformeIdadeMatricula extends StatefulWidget {
+  InformeIdadeMatricula({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
   @override
   _InformeIdadeMatriculaState createState() => _InformeIdadeMatriculaState();
 }
 
-var _informeMatriculaController = TextEditingController();
-int idade = 0;
 
 class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
+  var _informeMatriculaController = TextEditingController();
+  int idade = 0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,9 +101,11 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
             child: CustonButton(
             label: 'Continuar',
             onTap: (){
+              widget.aluno.idade = this.idade;
+              widget.aluno.matricula = this._informeMatriculaController.text;
               Navigator.push(
                 context, 
-                MaterialPageRoute(builder: (context) => UtilizaMascaraPage())
+                MaterialPageRoute(builder: (context) => UtilizaMascaraPage(aluno:widget.aluno))
               );
             },
           ),

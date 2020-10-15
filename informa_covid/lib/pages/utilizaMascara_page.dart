@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/pages/diagnosticadoCovid_page.dart';
 import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
@@ -8,6 +9,10 @@ import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class UtilizaMascaraPage extends StatefulWidget {
+  UtilizaMascaraPage({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
   @override
   _UtilizaMascaraPageState createState() => _UtilizaMascaraPageState();
 }
@@ -70,9 +75,10 @@ class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
           actions: [
             FlatButton(
               onPressed: (){
+                widget.aluno.mascara = true;
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage())
+                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage(aluno:widget.aluno))
                 );
               }, 
               child: Text('Continuar')
@@ -101,9 +107,10 @@ class _UtilizaMascaraPageState extends State<UtilizaMascaraPage> {
           actions: [
             FlatButton(
               onPressed: (){
+                widget.aluno.mascara = false;
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage())
+                  MaterialPageRoute(builder: (context) => DiagnosticadoCovidPage(aluno:widget.aluno))
                 );
               }, 
               child: Text('Entendido?')

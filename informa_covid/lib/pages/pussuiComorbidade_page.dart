@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/pages/agradecimento_page.dart';
 import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
@@ -8,6 +9,11 @@ import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class PossuiComorbidadePage extends StatefulWidget {
+
+  PossuiComorbidadePage({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
   @override
   _PossuiComorbidadePageState createState() => _PossuiComorbidadePageState();
 }
@@ -38,10 +44,11 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
                     _comorbidade();
                   },
                   onTapNo: () {
+                    widget.aluno.comorbidades = new List<String>();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AgradecimentoPage()),
+                          builder: (context) => AgradecimentoPage(aluno:widget.aluno)),
                     );
                   },
                 ),
@@ -72,9 +79,10 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
           actions: [
             FlatButton(
               onPressed: (){
+                widget.aluno.comorbidades.add(dialogDoenca.toString());
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => AgradecimentoPage())
+                  MaterialPageRoute(builder: (context) => AgradecimentoPage(aluno:widget.aluno))
                 );
               }, 
               child: Text('OK')

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/lista_widget.dart';
@@ -7,6 +8,11 @@ import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class ListaPerguntas extends StatelessWidget {
+
+  ListaPerguntas({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
   final List<CheckBoxPerguntas> itens = [
     CheckBoxPerguntas(texto: "Alteração no paladar"),
     CheckBoxPerguntas(texto: "Alteração no olfato"),
@@ -43,9 +49,10 @@ class ListaPerguntas extends StatelessWidget {
             child: CustonButton(
               label: 'Continuar',
               onTap: (){
+                aluno.sintomas = new List<String>();
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage())
+                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage(aluno:this.aluno))
                 );
               },
             )

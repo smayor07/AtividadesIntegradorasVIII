@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informa_covid/classes/aluno.dart';
 import 'package:informa_covid/main.dart';
 import 'package:informa_covid/pages/contatoCovid_page.dart';
 import 'package:informa_covid/pages/lista_perguntas_page.dart';
@@ -9,6 +10,11 @@ import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class DiagnosticadoCovidPage extends StatefulWidget {
+
+  DiagnosticadoCovidPage({Key key, this.aluno}) : super(key: key);
+
+  final Aluno aluno;
+
   @override
   _DiagnosticadoCovidPageState createState() => _DiagnosticadoCovidPageState();
 }
@@ -37,9 +43,10 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
                 NoYes(
                   caminhoImg: "assets/tosse.png",
                   onTapYes: () {
+                    widget.aluno.diagnosticado = true;
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ListaPerguntas()),
+                      MaterialPageRoute(builder: (context) => ListaPerguntas(aluno:widget.aluno)),
                     );
                   },
                   onTapNo: () {
@@ -73,9 +80,10 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
           actions: [
             FlatButton(
               onPressed: (){
+                widget.aluno.diagnosticado = false;
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => ContatoCovidPage())
+                  MaterialPageRoute(builder: (context) => ContatoCovidPage(aluno:widget.aluno))
                 );
               }, 
               child: Text('Entendido?')
