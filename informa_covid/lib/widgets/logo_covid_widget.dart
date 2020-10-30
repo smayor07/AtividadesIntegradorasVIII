@@ -7,6 +7,7 @@ class LogoCovid extends StatelessWidget {
     return SvgPicture.asset(
       "assets/logo-covid.svg",
       height: 40.0,
+      color: Colors.white,
     );
   }
 }

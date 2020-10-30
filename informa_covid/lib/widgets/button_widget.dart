@@ -21,7 +21,7 @@ class CustonButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(40),
       child: Material(
-        color: Color(0xFF0EBCA3).withOpacity(0.5),
+        color: Colors.blue.withOpacity(0.5),
         child: InkWell(
           splashColor: Color(0xFF0EBCA3),
           onTap: onTap,

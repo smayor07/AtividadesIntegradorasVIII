@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/classes/aluno.dart';
+import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
-import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/round_button_widget.dart';
@@ -9,6 +8,8 @@ import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class EscolhaSexoPage extends StatefulWidget {
   @override
+  EscolhaSexoPage({Key key, this.pessoa}) : super(key: key);
+  final Pessoa pessoa;
   _EscolhaSexoPageState createState() => _EscolhaSexoPageState();
 }
 
@@ -35,22 +36,20 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                 RoundButton(
                   caminhoImg: "assets/fem.png",
                   onTap: () {
-                    Aluno aluno = new Aluno("Feminino");
-                    print("Feminino");
+                    widget.pessoa.sexo = "Feminino";
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(aluno:aluno)),
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
                   );
                   },
                 ),
                 RoundButton(
                   caminhoImg: "assets/masc.png",
                   onTap: () {
-                    Aluno aluno = new Aluno("Masculino");
-                    print("Masculino");
+                    widget.pessoa.sexo = "Masculino";
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(aluno:aluno)),
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
                   );
                   },
                 ),

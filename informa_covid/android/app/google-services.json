@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "987682414057",
-    "firebase_url": "https://informa-covid-19.firebaseio.com",
-    "project_id": "informa-covid-19",
-    "storage_bucket": "informa-covid-19.appspot.com"
+    "project_number": "544930461332",
+    "firebase_url": "https://informa-covid.firebaseio.com",
+    "project_id": "informa-covid",
+    "storage_bucket": "informa-covid.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:987682414057:android:80add92cdc265aa4c9ff78",
+        "mobilesdk_app_id": "1:544930461332:android:44f5bfbf4acd80331de681",
         "android_client_info": {
-          "package_name": "com.informacovid"
+          "package_name": "com.company.informacovid"
         }
       },
       "oauth_client": [
         {
-          "client_id": "987682414057-2ksmocgm93iorbo68tg5q071hbm5loge.apps.googleusercontent.com",
+          "client_id": "544930461332-hqpalrggd3lt23i9et888gp2llde1d3b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBUZ0Uo5EVfNUcK1fgtHPcavolqVp7ytto"
+          "current_key": "AIzaSyA5zGneMw31Exx4dBsRUvowi_Uq-xBOZUQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "987682414057-2ksmocgm93iorbo68tg5q071hbm5loge.apps.googleusercontent.com",
+              "client_id": "544930461332-hqpalrggd3lt23i9et888gp2llde1d3b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

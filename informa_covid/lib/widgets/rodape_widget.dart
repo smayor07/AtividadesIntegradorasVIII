@@ -10,7 +10,7 @@ class Rodape extends StatelessWidget {
           height: 62,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Color(0xFF7dcadb),
+            color: Colors.blue,
           ),
         ),
         Center(

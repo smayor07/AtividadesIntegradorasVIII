@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/classes/aluno.dart';
+import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/lista_perguntas_page.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
@@ -10,9 +10,9 @@ import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class ContatoCovidPage extends StatefulWidget {
 
-  ContatoCovidPage({Key key, this.aluno}) : super(key: key);
+  ContatoCovidPage({Key key, this.pessoa}) : super(key: key);
 
-  final Aluno aluno;
+  final Pessoa pessoa;
 
   @override
   _ContatoCovidPageState createState() => _ContatoCovidPageState();
@@ -43,11 +43,11 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
                 NoYes(
                   caminhoImg: "assets/contato.png",
                   onTapYes: () {
-                    widget.aluno.contato = true;
+                    widget.pessoa.contato = true;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ListaPerguntas(aluno:widget.aluno)),
+                          builder: (context) => ListaPerguntas(pessoa:widget.pessoa)),
                     );
                   },
                   onTapNo: () {
@@ -81,10 +81,10 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
           actions: [
             FlatButton(
               onPressed: (){
-                widget.aluno.contato = false;
+                widget.pessoa.contato = false;
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage(aluno:widget.aluno))
+                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage(pessoa:widget.pessoa))
                 );
               }, 
               child: Text('Entendido?')

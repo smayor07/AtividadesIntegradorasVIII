@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/classes/aluno.dart';
+import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/agradecimento_page.dart';
-import 'package:informa_covid/pages/utilizaMascara_page.dart';
+import 'package:informa_covid/pages/lista_doenca_cronica.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
-import 'package:informa_covid/widgets/dialog_writer_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class PossuiComorbidadePage extends StatefulWidget {
 
-  PossuiComorbidadePage({Key key, this.aluno}) : super(key: key);
+  PossuiComorbidadePage({Key key, this.pessoa}) : super(key: key);
 
-  final Aluno aluno;
+  final Pessoa pessoa;
 
   @override
   _PossuiComorbidadePageState createState() => _PossuiComorbidadePageState();
@@ -36,19 +35,24 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Titulo(
-                  label: "Você possui alguma comorbidade?",
+                  label: "Você possui alguma doença crônica?",
                 ),
                 NoYes(
                   caminhoImg: "assets/saude.png",
                   onTapYes: () {
-                    _comorbidade();
-                  },
-                  onTapNo: () {
-                    widget.aluno.comorbidades = new List<String>();
+                    widget.pessoa.comorbidades = new List<String>();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AgradecimentoPage(aluno:widget.aluno)),
+                          builder: (context) => ListaDoencaCronica(pessoa:widget.pessoa)),
+                    );
+                  },
+                  onTapNo: () {
+                    widget.pessoa.comorbidades = new List<String>();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AgradecimentoPage(pessoa:widget.pessoa)),
                     );
                   },
                 ),
@@ -61,44 +65,44 @@ class _PossuiComorbidadePageState extends State<PossuiComorbidadePage> {
     );
   }
 
-  void _comorbidade() {
-    DialogWriterWidget dialogDoenca = DialogWriterWidget();
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Informe sua doença:',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20.0,
-              color: Colors.black
-            ),
-          ),
-          content: dialogDoenca,
-          actions: [
-            FlatButton(
-              onPressed: (){
-                widget.aluno.comorbidades.add(dialogDoenca.toString());
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => AgradecimentoPage(aluno:widget.aluno))
-                );
-              }, 
-              child: Text('OK')
-            ),
-            FlatButton(
-              onPressed: (){
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage())
-                );
-              }, 
-              child: Text('Cancelar')
-            )
-          ],
-        );
-      }
-    );
-  }
+  // void _comorbidade() {
+  //   DialogWriterWidget dialogDoenca = DialogWriterWidget();
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text(
+  //           'Informe sua doença:',
+  //           textAlign: TextAlign.center,
+  //           style: TextStyle(
+  //             fontSize: 20.0,
+  //             color: Colors.black
+  //           ),
+  //         ),
+  //         content: dialogDoenca,
+  //         actions: [
+  //           FlatButton(
+  //             onPressed: (){
+  //               widget.pessoa.comorbidades.add(dialogDoenca.toString());
+  //               Navigator.push(
+  //                 context, 
+  //                 MaterialPageRoute(builder: (context) => AgradecimentoPage(pessoa:widget.pessoa))
+  //               );
+  //             }, 
+  //             child: Text('OK')
+  //           ),
+  //           FlatButton(
+  //             onPressed: (){
+  //               Navigator.push(
+  //                 context, 
+  //                 MaterialPageRoute(builder: (context) => PossuiComorbidadePage())
+  //               );
+  //             }, 
+  //             child: Text('Cancelar')
+  //           )
+  //         ],
+  //       );
+  //     }
+  //   );
+  // }
 }

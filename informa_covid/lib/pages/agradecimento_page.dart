@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/classes/aluno.dart';
-import 'package:informa_covid/repository/dataaluno.dart';
-import 'package:informa_covid/widgets/NoYes_widget.dart';
+import 'package:informa_covid/classes/Pessoa.dart';
+import 'package:informa_covid/pages/splash_screen.dart';
+import 'package:informa_covid/repository/data_pessoa.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
+import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 
-class AgradecimentoPage extends StatelessWidget {
-  
-  AgradecimentoPage({Key key, this.aluno}) : super(key: key);
+class AgradecimentoPage extends StatefulWidget {
+  AgradecimentoPage({Key key, this.pessoa}) : super(key: key);
 
-  final Aluno aluno;
+  final Pessoa pessoa;
 
-  AlunoRepository alunoRepository = new AlunoRepository();
+  @override
+  _AgradecimentoPageState createState() => _AgradecimentoPageState();
+}
+
+class _AgradecimentoPageState extends State<AgradecimentoPage> {
+  PessoaRepository pessoaRepository = new PessoaRepository();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informa Covid"),
+        title: LogoCovid(),
         centerTitle: true,
       ),
       body: Column(
@@ -25,19 +30,21 @@ class AgradecimentoPage extends StatelessWidget {
           SizedBox(
             height: 70,
           ),
-          Center(
-            child: Container(
-              width: 240,
-              height: 150,
-              color: Colors.transparent,
-              child: Text(
-                'Agradecemos '
-                'sua colaboração '
-                'e desejamos '
-                'boas aulas!!! ',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 32,
+          Expanded(
+            child: Center(
+              child: Container(
+                width: 240,
+                height: 150,
+                color: Colors.transparent,
+                child: Text(
+                  'Agradecemos '
+                  'sua colaboração '
+                  'e desejamos '
+                  'boas aulas!!! ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 32,
+                  ),
                 ),
               ),
             ),
@@ -45,8 +52,9 @@ class AgradecimentoPage extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          Center(
-            child: Row(
+          Container(
+            child: Center(
+                child: Row(
               children: [
                 Container(
                   width: 260,
@@ -59,13 +67,17 @@ class AgradecimentoPage extends StatelessWidget {
                   ),
                 ),
                 CustonButton(
-                  label: "Finalizar",
-                  onTap: (){
-                    alunoRepository.addAluno(this.aluno);
+                  label: " Fim ",
+                  onTap: () {
+                    pessoaRepository.addPessoa(widget.pessoa);
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => SplashScreen())
+                    );
                   },
                 )
               ],
-            )
+            )),
           ),
           Rodape()
         ],

@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Informa Covid',
       theme: ThemeData(
-        primaryColor: Color(0xFF0EBCA3),
+        primaryColor: Colors.blue,
         canvasColor: Color(0xFFD6EDE7),
       ),
       home: SplashScreen(),

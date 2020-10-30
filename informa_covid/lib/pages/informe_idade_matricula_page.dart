@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:informa_covid/classes/aluno.dart';
+import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
+import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class InformeIdadeMatricula extends StatefulWidget {
-  InformeIdadeMatricula({Key key, this.aluno}) : super(key: key);
+  InformeIdadeMatricula({Key key, this.pessoa}) : super(key: key);
 
-  final Aluno aluno;
+  final Pessoa pessoa;
 
   @override
   _InformeIdadeMatriculaState createState() => _InformeIdadeMatriculaState();
@@ -16,7 +17,7 @@ class InformeIdadeMatricula extends StatefulWidget {
 
 class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
   var _informeMatriculaController = TextEditingController();
-  int idade = 0;
+  var _informeIdadeController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
@@ -35,39 +36,32 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
                 SizedBox(
                   height: 70,
                 ),
-                Center(
-                    child: Container(
-                  child: Text(
-                    'Informe sua idade',
-                    style: TextStyle(fontSize: 35),
-                  ),
-                )),
+                Titulo(
+                  label: "Informe",
+                ),
                 Center(
                   child: Container(
-                    padding: EdgeInsets.only(top: 40, left: 20, right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Idade: ${idade} anos',
-                          style: TextStyle(fontSize: 25),
-                        ),
-                        ButtonTheme(
-                          minWidth: 25.0,
-                          height: 40.0,
-                          buttonColor: Colors.grey,
-                          child: RaisedButton(
-                              child: Icon(
-                                Icons.date_range,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                calculaIdade(context);
-                              }),
-                        )
-                      ],
-                    ),
-                  ),
+                      padding: EdgeInsets.only(top: 40,left: 20, right: 20),
+                      child: TextFormField(
+                        validator: (input) {
+                          if (input.isEmpty) {
+                            return 'Insira uma matrícula válida!';
+                          } else {
+                            return null;
+                          }
+                        },
+                        onSaved: (input) =>
+                            _informeIdadeController.text = input,
+                            controller: _informeIdadeController,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                            labelText: 'Idade em anos*',
+                            labelStyle: TextStyle(
+                              color: Colors.black38,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 25,
+                            )),
+                      )),
                 ),
                 Center(
                   child: Container(
@@ -101,11 +95,11 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
             child: CustonButton(
             label: 'Continuar',
             onTap: (){
-              widget.aluno.idade = this.idade;
-              widget.aluno.matricula = this._informeMatriculaController.text;
+              widget.pessoa.idade = int.parse(this._informeIdadeController.text);
+              widget.pessoa.matricula = this._informeMatriculaController.text;
               Navigator.push(
                 context, 
-                MaterialPageRoute(builder: (context) => UtilizaMascaraPage(aluno:widget.aluno))
+                MaterialPageRoute(builder: (context) => UtilizaMascaraPage(pessoa:widget.pessoa))
               );
             },
           ),
@@ -116,27 +110,27 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
     );
   }
 
-  Future<Null> calculaIdade(BuildContext context) async {
-    showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1970),
-            lastDate: DateTime(2222))
-        .then((date) {
-      setState(() {
-        idade = 0;
-        DateTime nascimento = date;
-        DateTime dataAtual = DateTime.now();
-        int days = dataAtual.difference(nascimento).inDays;
-        int aux = 0;
-        for (var i = 0; i < days; i++) {
-          if (aux == 365) {
-            aux = 0;
-            idade++;
-          }
-          aux++;
-        }
-      });
-    });
-  }
+  // Future<Null> calculaIdade(BuildContext context) async {
+  //   showDatePicker(
+  //           context: context,
+  //           initialDate: DateTime.now(),
+  //           firstDate: DateTime(1970),
+  //           lastDate: DateTime(2222))
+  //       .then((date) {
+  //     setState(() {
+  //       idade = 0;
+  //       DateTime nascimento = date;
+  //       DateTime dataAtual = DateTime.now();
+  //       int days = dataAtual.difference(nascimento).inDays;
+  //       int aux = 0;
+  //       for (var i = 0; i < days; i++) {
+  //         if (aux == 365) {
+  //           aux = 0;
+  //           idade++;
+  //         }
+  //         aux++;
+  //       }
+  //     });
+  //   });
+  // }
 }

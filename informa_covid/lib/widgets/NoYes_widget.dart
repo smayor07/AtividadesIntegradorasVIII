@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/pages/utilizaMascara_page.dart';
 import 'package:informa_covid/widgets/round_button_widget.dart';
+import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class NoYes extends StatelessWidget {
   final String caminhoImg;
@@ -45,14 +46,30 @@ class NoYes extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
+            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Botao(caminhoImg: ("assets/yes.png"), onTap: onTapYes),
+                Container(),
                 Botao(caminhoImg: ("assets/no.png"), onTap: onTapNo),
               ],
-            ),
+            )
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Titulo(
+                  label: "SIM   ",
+                ),
+                Container(),
+                Titulo(
+                  label: "NÃO",
+                )
+              ],
+            )
           )
         ],
       ),
