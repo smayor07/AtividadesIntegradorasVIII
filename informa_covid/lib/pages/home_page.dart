@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Checkbox(
-                    activeColor: Color(0xFF0EBCA3).withOpacity(0.5),
+                    activeColor: Colors.blue,
                     value: checkbox,
                     onChanged: (value) {
                       setState(() {

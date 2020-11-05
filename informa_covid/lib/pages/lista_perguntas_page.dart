@@ -7,12 +7,17 @@ import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
-class ListaPerguntas extends StatelessWidget {
+class ListaPerguntas extends StatefulWidget {
 
   ListaPerguntas({Key key, this.pessoa}) : super(key: key);
 
   final Pessoa pessoa;
 
+  @override
+  _ListaPerguntasState createState() => _ListaPerguntasState();
+}
+
+class _ListaPerguntasState extends State<ListaPerguntas> {
   final List<CheckBoxPerguntas> itens = [
     CheckBoxPerguntas(texto: "Alteração no paladar"),
     CheckBoxPerguntas(texto: "Febre"),
@@ -47,10 +52,10 @@ class ListaPerguntas extends StatelessWidget {
             child: CustonButton(
               label: 'Continuar',
               onTap: (){
-                pessoa.sintomas = new List<String>();
+                widget.pessoa.sintomas = _doencasCheckadas();
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage(pessoa:this.pessoa))
+                  MaterialPageRoute(builder: (context) => PossuiComorbidadePage(pessoa:this.widget.pessoa))
                 );
               },
             )
@@ -59,5 +64,14 @@ class ListaPerguntas extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<String> _doencasCheckadas() {
+    List<String> listChecked = new List<String>();
+    List<CheckBoxPerguntas> itensMarcados = List.from(itens.where((item) => item.checked));
+    itensMarcados.forEach((element) {
+      listChecked.add(element.texto);
+    });
+    return listChecked;
   }
 }

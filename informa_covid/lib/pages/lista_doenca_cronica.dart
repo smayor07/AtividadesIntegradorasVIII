@@ -50,7 +50,7 @@ class _ListaDoencaCronicaState extends State<ListaDoencaCronica> {
             child: CustonButton(
               label: 'Continuar',
               onTap: (){
-                widget.pessoa.sintomas = new List<String>();
+                widget.pessoa.comorbidades = _doencasCheckadas();
                 Navigator.push(
                   context, 
                   MaterialPageRoute(builder: (context) => AgradecimentoPage(pessoa:widget.pessoa))
@@ -62,5 +62,14 @@ class _ListaDoencaCronicaState extends State<ListaDoencaCronica> {
         ],
       ),
     );
+  }
+
+  List<String> _doencasCheckadas() {
+    List<String> listChecked = new List<String>();
+    List<CheckBoxPerguntas> itensMarcados = List.from(itens.where((item) => item.checked));
+    itensMarcados.forEach((element) {
+      listChecked.add(element.texto);
+    });
+    return listChecked;
   }
 }

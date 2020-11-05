@@ -45,7 +45,7 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
                       child: TextFormField(
                         validator: (input) {
                           if (input.isEmpty) {
-                            return 'Insira uma matrícula válida!';
+                            return 'Insira uma idade válida!';
                           } else {
                             return null;
                           }
@@ -64,28 +64,7 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
                       )),
                 ),
                 Center(
-                  child: Container(
-                      padding: EdgeInsets.only(top: 40,left: 20, right: 20),
-                      child: TextFormField(
-                        validator: (input) {
-                          if (input.isEmpty) {
-                            return 'Insira uma matrícula válida!';
-                          } else {
-                            return null;
-                          }
-                        },
-                        onSaved: (input) =>
-                            _informeMatriculaController.text = input,
-                            controller: _informeMatriculaController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                            labelText: 'Matrícula*',
-                            labelStyle: TextStyle(
-                              color: Colors.black38,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 25,
-                            )),
-                      )),
+                  child: returnMatriculaGambi()
                 )
               ],
             ),
@@ -108,6 +87,35 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
         ],
       ),
     );
+  }
+
+  Widget returnMatriculaGambi() {
+    if (widget.pessoa.tipoPessoa == "Colaborador") {
+      return Container();
+    } else {
+      return Container(
+              padding: EdgeInsets.only(top: 40,left: 20, right: 20),
+              child: TextFormField(
+                validator: (input) {
+                  if (input.isEmpty) {
+                    return 'Insira uma matrícula válida!';
+                  } else {
+                    return null;
+                  }
+                },
+                onSaved: (input) =>
+                    _informeMatriculaController.text = input,
+                    controller: _informeMatriculaController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                    labelText: 'Matrícula*',
+                    labelStyle: TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 25,
+                    )),
+              ));
+    }
   }
 
   // Future<Null> calculaIdade(BuildContext context) async {
