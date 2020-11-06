@@ -11,11 +11,12 @@ class Pessoa{
   bool mascara;
   List<String> comorbidades = List<String>();
   String tipoPessoa;
+  String tempoContato;
   
   DocumentReference reference;
 
   Pessoa(this.tipoPessoa,{this.comorbidades,this.contato,this.diagnosticado,this.idade,this.mascara,
-  this.matricula,this.sintomas,this.sexo});
+  this.matricula,this.sintomas,this.sexo,this.tempoContato});
 
   factory Pessoa.fromSnapshot(DocumentSnapshot snapshot){
     Pessoa novoPessoa = Pessoa.fromJson(snapshot.data);
@@ -39,7 +40,8 @@ Pessoa _PessoaFromJson(Map<dynamic,dynamic> json){
     idade: json['idade'] as int,
     mascara: json['mascara'] as bool,
     matricula: json['matricula'] as String,
-    sintomas: json['sintomas'] as List
+    sintomas: json['sintomas'] as List,
+    tempoContato: json['tempocontato'] as String
   );
 }
 
@@ -52,5 +54,6 @@ Map<String, dynamic> _PessoaToJson(Pessoa instance) => <String, dynamic>{
   'mascara': instance.mascara,
   'matricula': instance.matricula,
   'sintomas': instance.sintomas,
-  'tipopessoa' : instance.tipoPessoa
+  'tipopessoa' : instance.tipoPessoa,
+  'tempocontato' : instance.tempoContato
 };

@@ -38,7 +38,7 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
               children: <Widget>[
                 Titulo(
                   label:
-                      "Você já teve contato com alguém diagnosticado com Covid-19?",
+                      "Você já teve contato com alguém diagnosticado com Covid-19 nos últimos 7 dias?",
                 ),
                 NoYes(
                   caminhoImg: "assets/contato.png",

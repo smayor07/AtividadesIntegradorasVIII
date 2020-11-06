@@ -22,7 +22,8 @@ class _ListaDoencaCronicaState extends State<ListaDoencaCronica> {
     CheckBoxPerguntas(texto: "Pressão Alta"),
     CheckBoxPerguntas(texto: "HIV"),
     CheckBoxPerguntas(texto: "Câncer"),
-    CheckBoxPerguntas(texto: "Bronquite")
+    CheckBoxPerguntas(texto: "Bronquite"),
+    CheckBoxPerguntas(texto: "Outras"),
   ];
 
   @override

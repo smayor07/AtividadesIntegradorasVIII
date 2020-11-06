@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/informe_idade_matricula_page.dart';
+import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
 import 'package:informa_covid/widgets/rodape_widget.dart';
-import 'package:informa_covid/widgets/round_button_widget.dart';
 import 'package:informa_covid/widgets/titulo_widget.dart';
 
 class EscolhaSexoPage extends StatefulWidget {
@@ -31,10 +31,10 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Titulo(
-                  label: "Informe se sexo",
+                  label: "Informe seu sexo",
                 ),
-                RoundButton(
-                  caminhoImg: "assets/fem.png",
+                CustonButton(
+                  label: "Feminino",
                   onTap: () {
                     widget.pessoa.sexo = "Feminino";
                     Navigator.push(
@@ -43,10 +43,20 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                   );
                   },
                 ),
-                RoundButton(
-                  caminhoImg: "assets/masc.png",
+                CustonButton(
+                  label: "Masculino",
                   onTap: () {
                     widget.pessoa.sexo = "Masculino";
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
+                  );
+                  },
+                ),
+                CustonButton(
+                  label: "Não Informar",
+                  onTap: () {
+                    widget.pessoa.sexo = "Não Informado";
                     Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),

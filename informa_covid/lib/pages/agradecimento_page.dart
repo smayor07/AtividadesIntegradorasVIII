@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/splash_screen.dart';
@@ -70,10 +73,13 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
                   label: " Fim ",
                   onTap: () {
                     pessoaRepository.addPessoa(widget.pessoa);
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder: (context) => SplashScreen())
-                    );
+                    Timer(
+                        Duration(seconds: 1),
+                        () => exit(0));
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => SplashScreen())
+                    // );
                   },
                 )
               ],

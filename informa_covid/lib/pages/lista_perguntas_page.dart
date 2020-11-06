@@ -25,6 +25,7 @@ class _ListaPerguntasState extends State<ListaPerguntas> {
     CheckBoxPerguntas(texto: "Dor de cabeça"),
     CheckBoxPerguntas(texto: "Dor de garganta"),
     CheckBoxPerguntas(texto: "Diarréia"),
+    CheckBoxPerguntas(texto: "Nenhum sintoma"),
   ];
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/contatoCovid_page.dart';
 import 'package:informa_covid/pages/lista_perguntas_page.dart';
+import 'package:informa_covid/pages/tempoDiagnosticado_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/dialog_mascara_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
@@ -45,7 +46,7 @@ class _DiagnosticadoCovidPageState extends State<DiagnosticadoCovidPage> {
                     widget.pessoa.diagnosticado = true;
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ListaPerguntas(pessoa:widget.pessoa)),
+                      MaterialPageRoute(builder: (context) => TempoDiagnosticadoCovid(pessoa:widget.pessoa)),
                     );
                   },
                   onTapNo: () {
