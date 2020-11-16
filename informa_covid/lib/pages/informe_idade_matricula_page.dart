@@ -22,6 +22,7 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Informa Covid"),
         centerTitle: true,
@@ -72,16 +73,16 @@ class _InformeIdadeMatriculaState extends State<InformeIdadeMatricula> {
           Container(
             padding: EdgeInsets.only(bottom: 30, left: 20, right: 20),
             child: CustonButton(
-            label: 'Continuar',
-            onTap: (){
-              widget.pessoa.idade = int.parse(this._informeIdadeController.text);
-              widget.pessoa.matricula = this._informeMatriculaController.text;
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => UtilizaMascaraPage(pessoa:widget.pessoa))
-              );
-            },
-          ),
+                    label: 'Continuar',
+                    onTap: (){
+                      widget.pessoa.idade = int.parse(this._informeIdadeController.text);
+                      widget.pessoa.matricula = this._informeMatriculaController.text;
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => UtilizaMascaraPage(pessoa:widget.pessoa))
+                      );
+                    },
+                  ),
           ),
           Rodape()
         ],

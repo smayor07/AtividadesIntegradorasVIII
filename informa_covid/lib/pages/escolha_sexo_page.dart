@@ -35,22 +35,22 @@ class _EscolhaSexoPageState extends State<EscolhaSexoPage> {
                 ),
                 CustonButton(
                   label: "Feminino",
-                  onTap: () {
-                    widget.pessoa.sexo = "Feminino";
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
-                  );
+                    onTap: () {
+                      widget.pessoa.sexo = "Feminino";
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
+                    );
                   },
                 ),
                 CustonButton(
                   label: "Masculino",
-                  onTap: () {
-                    widget.pessoa.sexo = "Masculino";
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
-                  );
+                    onTap: () {
+                      widget.pessoa.sexo = "Masculino";
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InformeIdadeMatricula(pessoa:widget.pessoa)),
+                    );
                   },
                 ),
                 CustonButton(

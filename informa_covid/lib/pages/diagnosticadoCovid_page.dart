@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
 import 'package:informa_covid/pages/contatoCovid_page.dart';
-import 'package:informa_covid/pages/lista_perguntas_page.dart';
 import 'package:informa_covid/pages/tempoDiagnosticado_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/dialog_mascara_widget.dart';

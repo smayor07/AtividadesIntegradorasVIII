@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
-import 'package:informa_covid/pages/lista_perguntas_page.dart';
+import 'package:informa_covid/pages/agradecimento_page.dart';
 import 'package:informa_covid/pages/pussuiComorbidade_page.dart';
 import 'package:informa_covid/widgets/NoYes_widget.dart';
 import 'package:informa_covid/widgets/dialog_mascara_widget.dart';
@@ -38,7 +38,7 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
               children: <Widget>[
                 Titulo(
                   label:
-                      "Você já teve contato com alguém diagnosticado com Covid-19 nos últimos 7 dias?",
+                      "Você já teve contato com alguém diagnosticado com Covid-19 nas últimas 2 semanas?",
                 ),
                 NoYes(
                   caminhoImg: "assets/contato.png",
@@ -47,7 +47,7 @@ class _ContatoCovidPageState extends State<ContatoCovidPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ListaPerguntas(pessoa:widget.pessoa)),
+                          builder: (context) => AgradecimentoPage(pessoa:widget.pessoa)),
                     );
                   },
                   onTapNo: () {

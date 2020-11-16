@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:informa_covid/classes/Pessoa.dart';
-import 'package:informa_covid/pages/splash_screen.dart';
 import 'package:informa_covid/repository/data_pessoa.dart';
 import 'package:informa_covid/widgets/button_widget.dart';
 import 'package:informa_covid/widgets/logo_covid_widget.dart';
@@ -20,6 +19,10 @@ class AgradecimentoPage extends StatefulWidget {
 
 class _AgradecimentoPageState extends State<AgradecimentoPage> {
   PessoaRepository pessoaRepository = new PessoaRepository();
+  String alertaDiagnosticado = "Recomendamos que você fique em casa por 14 dias após seu diagnóstico, pois nesse período você pode transmitir a doença para outras pessoas. Sempre faça a utilização de máscaras, mesmo após se recuperar. Limpe as superfícies e lave as mãos frequentemente e mantenha o distanciamento social sempre que possível.";
+  String alertaDiagnosticadoContato = "Você pode estar infectado pelo novo coronavírus, mesmo que não tenha nenhum sintoma. É muito importante que você utilize máscaras sempre e mantenha o distanciamento social para sua proteção e para proteção de outras pessoas. Se você apresentar algum sintoma, procure atendimento médico o mais breve possível.";
+  String agradecimento = "Agradecemos sua colaboração e desejamos boas aulas!!!";
+  String msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +33,16 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
       ),
       body: Column(
         children: <Widget>[
-          SizedBox(
-            height: 70,
-          ),
           Expanded(
             child: Center(
               child: Container(
-                width: 240,
-                height: 150,
+                padding: EdgeInsets.only(top: 10, bottom: 10, right: 10, left: 10),
                 color: Colors.transparent,
                 child: Text(
-                  'Agradecemos '
-                  'sua colaboração '
-                  'e desejamos '
-                  'boas aulas!!! ',
+                  _retornaMensagem(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -58,19 +54,11 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
           Container(
             child: Center(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 260,
-                  height: 270,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/tchau.png'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
                 CustonButton(
-                  label: " Fim ",
+                  label: "     Fim     ",
                   onTap: () {
                     pessoaRepository.addPessoa(widget.pessoa);
                     Timer(
@@ -81,13 +69,27 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
                     //   MaterialPageRoute(builder: (context) => SplashScreen())
                     // );
                   },
-                )
+                ),
               ],
             )),
+          ),
+          SizedBox(
+            height: 20,
           ),
           Rodape()
         ],
       ),
     );
+  }
+
+  String _retornaMensagem(){
+    if (widget.pessoa.tempoContato == "Menos de 14 dias") {
+      msg = alertaDiagnosticado;
+    } else if (widget.pessoa.contato != null && widget.pessoa.contato == true) {
+      msg = alertaDiagnosticadoContato;
+    } else {
+      msg = agradecimento;
+    }
+    return msg;
   }
 }
