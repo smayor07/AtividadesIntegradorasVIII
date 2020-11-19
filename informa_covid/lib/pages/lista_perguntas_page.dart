@@ -19,7 +19,7 @@ class ListaPerguntas extends StatefulWidget {
 }
 
 class _ListaPerguntasState extends State<ListaPerguntas> {
-  String sintomas = "A presença de um ou mais destes sintomas pode indicar que você tem alguma doença respiratória que pode ser transmitida para outras pessoas, como a covid-19. Recomendamos que você utilize de máscaras, mantenha o distanciamento social e procure atendimento médico o mais breve possível.";
+  String sintomas = "A presença de um ou mais destes sintomas pode indicar que você tem alguma doença respiratória que pode ser transmitida para outras pessoas, como a covid-19.";
   final List<CheckBoxPerguntas> itens = [
     CheckBoxPerguntas(texto: "Alteração no paladar"),
     CheckBoxPerguntas(texto: "Febre"),

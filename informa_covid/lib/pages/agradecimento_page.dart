@@ -21,7 +21,7 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
   PessoaRepository pessoaRepository = new PessoaRepository();
   String alertaDiagnosticado = "Recomendamos que você fique em casa por 14 dias após seu diagnóstico, pois nesse período você pode transmitir a doença para outras pessoas. Sempre faça a utilização de máscaras, mesmo após se recuperar. Limpe as superfícies e lave as mãos frequentemente e mantenha o distanciamento social sempre que possível.";
   String alertaDiagnosticadoContato = "Você pode estar infectado pelo novo coronavírus, mesmo que não tenha nenhum sintoma. É muito importante que você utilize máscaras sempre e mantenha o distanciamento social para sua proteção e para proteção de outras pessoas. Se você apresentar algum sintoma, procure atendimento médico o mais breve possível.";
-  String agradecimento = "Agradecemos sua colaboração e desejamos boas aulas!!!";
+  String agradecimento = "Agradecemos a sua colaboração, dia 23/11 voltaremos às aulas presenciais. Recomendamos que você respeite as recomendações da Unifenas e desejamos uma ótima volta às aulas!!";
   String msg = "";
 
   @override
@@ -83,7 +83,7 @@ class _AgradecimentoPageState extends State<AgradecimentoPage> {
   }
 
   String _retornaMensagem(){
-    if (widget.pessoa.tempoContato == "Menos de 14 dias") {
+    if (widget.pessoa.tempoContato == "Menos de 14 dias" || widget.pessoa.sintomas != null && widget.pessoa.sintomas.length > 0) {
       msg = alertaDiagnosticado;
     } else if (widget.pessoa.contato != null && widget.pessoa.contato == true) {
       msg = alertaDiagnosticadoContato;
